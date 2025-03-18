@@ -1,6 +1,8 @@
 services:
   mock-vitals-hl7:
-    image: ghcr.io/10bedicu/mock-teleicu-devices:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
     environment:
       - MIDDLEWARE_ADDRESS
       - MOCK_DATA_SOURCE=mock_data/hl7-monitor.json
@@ -8,7 +10,9 @@ services:
     restart: unless-stopped
 
   mock-vitals-ventilator:
-    image: ghcr.io/10bedicu/mock-teleicu-devices:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
     environment:
       - MIDDLEWARE_ADDRESS
       - MOCK_DATA_SOURCE=mock_data/ventilator.json
