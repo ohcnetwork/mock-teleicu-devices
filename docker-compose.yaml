@@ -1,0 +1,20 @@
+services:
+  mock-vitals-hl7:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - MIDDLEWARE_ADDRESS
+      - MOCK_DATA_SOURCE=mock_data/hl7-monitor.json
+    network_mode: host
+    restart: unless-stopped
+
+  mock-vitals-ventilator:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - MIDDLEWARE_ADDRESS
+      - MOCK_DATA_SOURCE=mock_data/ventilator.json
+    network_mode: host
+    restart: unless-stopped
